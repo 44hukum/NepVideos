@@ -27,15 +27,22 @@
             <div class="col-md-12 d-xl-flex justify-content-xl-start"><a class="btn btn-outline-warning text-end d-flex d-xl-flex justify-content-sm-center justify-content-xl-center align-items-xl-center btn-xl" role="button" href="javascript:history.go(-1)" style="width: 7%;text-align: right;background: #000000;">Back</a></div>
         </div>
         <div class="row g-0" style="margin-top: 20px;">
-            <div class="col-md-6 text-center"><img src="{{event.feature_image.url}}" width="50%" loading="eager"></div>
+            <div class="col-md-6 text-center">
+                
+                <video width="500px" height="500px" controls>
+                    <source src="{{ event.feature_image.url }}" type="video/mp4">
+               </video>
+             
+            
+            </div>
             <div class="col-md-6">
-                <h3 class="name">Event: {{event.event_name}}</h3>
+                <h3 class="name">Video {{event.event_name}}</h3>
                 <p style="padding: 36px;width: 100%;">
                     {{event.event_description}}    
                 </p>
                 <div style="text-align: left;padding: 34px;width: 100%;">
                     <p>Date: {{event.event_date}}</p>
-                    <p>Registration is {{event.event_registration_status}}</p>
+                    <p>Booking is {{event.event_registration_status}}</p>
                 </div>
             </div>
         </div>
@@ -45,12 +52,12 @@
 
         <!-- check for registraton -->
 {% if registration %}
-<h2 class="text-center">Registration Done</h2>
+<h2 class="text-center">Booking Done</h2>
 {%else%}
         {% if event.event_registration_status == "open"%}
         <form method="post" action="{{event.id}}/registration">
             {% csrf_token %}
-            <h2 class="text-center">Register</h2>
+            <h2 class="text-center">Book</h2>
             <div class="mb-3">
                 
               {{form.name}}  {{form.email}}  {{form.phonenumber}}
@@ -63,9 +70,9 @@
                 <button class="btn btn-outline-warning text-end d-sm-flex justify-content-sm-center btn-xl" type="submit" style="padding: 16px 60px;text-align: right;color: rgb(0,0,0);background: #ffffff;border-width: 2px;border-style: solid;transform: scale(0.90);">submit</button></div>
         </form>
         {% elif event.registration_status == "closed" %}
-            <p class="text-center">Registration is closed</p>
+            <p class="text-center">Booking is closed</p>
             {%else%}
-            <p class="text-center">Registration is not yet open</p>
+            <p class="text-center">Booking is not yet open</p>
         {%endif%}
 {%endif %}
     

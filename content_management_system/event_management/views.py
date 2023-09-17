@@ -5,7 +5,7 @@ from .models import (
     Event,
     Competition,
     Look_and_feel,
-    Registration,
+    Booking,
     Competition_Registration as cr
 )
 
@@ -50,7 +50,7 @@ def registration(request,event_id):
             event = Event.objects.get(id = event_id)
                     
             if form.is_valid():
-                event_registration = Registration()
+                event_registration = Booking()
                 event_registration.name = form.cleaned_data['name']
                 event_registration.email = form.cleaned_data['email']
                 event_registration.phonenumber = form.cleaned_data['phonenumber']

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Competition,Event,Registration,Competition_Registration,Look_and_feel
+from .models import Competition,Event,Booking,Competition_Registration,Look_and_feel
 
 # Register your models here.
 @admin.register(Competition_Registration)
@@ -8,7 +8,7 @@ class CompetitionRegistration(admin.ModelAdmin):
     list_display=('id','name','email','competition','phonenumber')
 
 
-@admin.register(Registration)
+@admin.register(Booking)
 class RegistrationAdmin(admin.ModelAdmin):
     list_display=('id','name','email','event','phonenumber')
 

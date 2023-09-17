@@ -15,7 +15,7 @@ class Event(models.Model):
 
     event_name = models.CharField(max_length=200)
     event_date = models.DateTimeField()
-    feature_image = models.ImageField(upload_to="events")
+    feature_image = models.FileField(upload_to="events")
     event_description = models.TextField()
     event_status = models.CharField(max_length=12,choices=EVENT_CHOICE,default=EVENT_CHOICE[0][0])
     event_registration_status = models.CharField(max_length=10,choices=REGISTRATION_STATUS,default=REGISTRATION_STATUS[0][0])
@@ -27,7 +27,7 @@ class Event(models.Model):
         ordering = ('-event_date',)
 
 
-class Registration(models.Model):
+class Booking(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
