@@ -135,3 +135,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,"media/")
 
 
 MEDIA_URL = "/media/"
+
+# settings.py
+AUTH_USER_MODEL = 'event_management.CustomUser'
+LOGIN_URL = 'login'
